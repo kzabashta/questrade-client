@@ -32,7 +32,7 @@ def get_account_positions(access_token, api_uri, account_id):
     print(r.json())
 
 def get_streaming_port(access_token):
-    request_url = '%sv1/markets/quotes?ids=9291,8049&stream=true&mode=WebSocket' % api_uri
+    request_url = '%sv1/markets/quotes?ids=4807280&stream=true&mode=WebSocket' % api_uri
     #request_url = 'https://api01.iq.questrade.com/v1/markets/quotes?ids=9291,8049&stream=true&mode=WebSocket'
     r = requests.get(request_url, headers=__build_auth_header(access_token))
     return r.json()['streamPort']
@@ -51,7 +51,7 @@ async def consume(message):
     print(message)
 
 async def hello(access_token, streaming_port, api_uri):
-    request_url = '%s:%i/v1/markets/quotes?ids=4807280&stream=true&mode=WebSocket' % (api_uri[:-1], streaming_port)
+    request_url = '%s:%i' % (api_uri[:-1], streaming_port)
     request_url = request_url.replace('https', 'wss')
     print("Connecting... %s" % request_url)
     async with websockets.connect(request_url) as websocket:
