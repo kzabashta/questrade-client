@@ -54,12 +54,7 @@ async def hello(access_token, streaming_port, api_uri):
     request_url = request_url.replace('https', 'wss')
     print("Connecting... %s" % request_url)
     async with websockets.connect(request_url) as websocket:
-        print("> {}".format(access_token))
         await websocket.send(access_token)
-
-        greeting = await websocket.recv()
-        print("< {}".format(greeting))
-
         async for message in websocket:
             await consume(message)
 
