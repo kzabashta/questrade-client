@@ -33,7 +33,6 @@ def get_account_positions(access_token, api_uri, account_id):
 
 def get_streaming_port(access_token):
     request_url = '%sv1/markets/quotes?ids=4807280&stream=true&mode=WebSocket' % api_uri
-    #request_url = 'https://api01.iq.questrade.com/v1/markets/quotes?ids=9291,8049&stream=true&mode=WebSocket'
     r = requests.get(request_url, headers=__build_auth_header(access_token))
     return r.json()['streamPort']
 
