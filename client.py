@@ -49,7 +49,7 @@ streaming_port = get_streaming_port(access_token)
 async def consume(message):
     print(message)
 
-async def hello(access_token, streaming_port, api_uri):
+async def subscribe(access_token, streaming_port, api_uri):
     request_url = '%s:%i' % (api_uri[:-1], streaming_port)
     request_url = request_url.replace('https', 'wss')
     print("Connecting... %s" % request_url)
@@ -58,4 +58,4 @@ async def hello(access_token, streaming_port, api_uri):
         async for message in websocket:
             await consume(message)
 
-asyncio.get_event_loop().run_until_complete(hello(access_token, streaming_port, api_uri))
+asyncio.get_event_loop().run_until_complete(subscribe(access_token, streaming_port, api_uri))
