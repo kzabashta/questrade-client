@@ -1,4 +1,5 @@
 docker_mount
+data
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
