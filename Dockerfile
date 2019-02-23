@@ -9,4 +9,4 @@ COPY . /app
 
 ENTRYPOINT [ "python" ]
 
-CMD [ "client.py" ]
+CMD [ "main.py" ]

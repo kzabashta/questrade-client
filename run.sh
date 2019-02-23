@@ -1,2 +1,2 @@
-docker build -t questrade .
-docker run -it questrade
+docker build -t qp .
+docker run -it qp

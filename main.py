@@ -6,11 +6,13 @@ from client import QTClient
 
 logging.basicConfig(level=logging.INFO,
                         format="[%(asctime)s:%(levelname)s:%(filename)s:%(lineno)s - %(funcName)20s() ] %(message)s",
-                        handlers=[logging.FileHandler("finances.log"),
+                        handlers=[logging.FileHandler("/mnt/finances.log"),
                                   logging.StreamHandler()])
 
 if __name__ == '__main__':
-    refresh_token = input('Please enter refresh token: ')
+    f = open("/mnt/refresh_token.txt", "r")
+    refresh_token = f.read()
+
     client = QTClient(refresh_token)
 
     account_id = client.get_account()['accounts'][0]['number']
